@@ -1,0 +1,31 @@
+--return {
+--	"nvim-tree/nvim-tree.lua",
+--version = "*",
+--lazy = false,
+--dependencies = {
+--"nvim-tree/nvim-web-devicons",
+--},
+--config = function()
+--require("nvim-tree").setup({
+--renderer = {
+--root_folder_label = ":t",
+--icons = {
+--web_devicons = {
+--file = { enable = true, color = true },
+--folder = { enable = true, color = true },
+--},
+--show = {
+--folder_arrow = true,
+--},
+--},
+--},
+--view = {
+--side = "right",
+--width = 40,
+--},
+--filters = {
+--dotfiles = false,
+--},
+--})
+--end,
+--}
