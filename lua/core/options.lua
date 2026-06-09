@@ -40,6 +40,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 vim.diagnostic.config({
 	virtual_text = true,
-	signs = true,
+	signs = false,
 	underline = true,
 })
