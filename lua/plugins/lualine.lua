@@ -7,8 +7,17 @@ return {
 				theme = "gruvbox_dark",
 				component_separators = { left = " ", right = " " },
 				section_separators = { left = "", right = "" },
+				icons_enabled = true,
 			},
 			sections = {
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(str)
+							return "  " .. str
+						end,
+					},
+				},
 				lualine_c = {},
 				lualine_x = {
 					{
