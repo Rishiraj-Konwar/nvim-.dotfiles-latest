@@ -21,6 +21,8 @@ opt.updatetime = 250
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+opt.swapfile = false
+
 vim.api.nvim_create_autocmd("ColorScheme", {
 	pattern = "*",
 	callback = function()
