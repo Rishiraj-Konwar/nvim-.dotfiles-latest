@@ -33,6 +33,21 @@ return {
 			}, {
 				{ name = "buffer" },
 			}),
+
+			window = {
+				completion = {
+					max_height = 10,
+					border = "rounded",
+					scrollbar = false,
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+				},
+				documentation = {
+					max_height = 10,
+					max_width = 15,
+					border = "rounded",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+				},
+			},
 		}
 	end,
 }

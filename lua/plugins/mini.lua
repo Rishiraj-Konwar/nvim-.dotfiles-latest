@@ -7,7 +7,7 @@ return {
 		file = {
 			[".env"] = {
 				glyph = "", -- The icon
-				hl = "MiniIconsYellow", -- The color highlight group
+				hl = "MiniIconsAzure", -- The color highlight group
 			},
 			directory = {
 				["node_modules"] = { glyph = "", hl = "MiniIconsRed" },
