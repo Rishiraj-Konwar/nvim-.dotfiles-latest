@@ -22,6 +22,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 opt.swapfile = false
+opt.backup = false
+
+opt.clipboard:append("unnamedplus")
 
 vim.api.nvim_create_autocmd("ColorScheme", {
 	pattern = "*",
