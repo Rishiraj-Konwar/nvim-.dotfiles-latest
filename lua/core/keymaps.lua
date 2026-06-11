@@ -15,8 +15,8 @@ vim.keymap.set({ "n", "v" }, "<leader>F", function()
 		timeout_ms = 500,
 	})
 end)
-
-vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float)
+keymaps.set("n", "gd", vim.lsp.buf.definition)
+keymaps.set("n", "<leader>E", vim.diagnostic.open_float)
 
 keymaps.set("n", "<leader>m", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 keymaps.set("n", "<leader>n", "<cmd>bnext<CR>", { desc = "Next buffer" })
