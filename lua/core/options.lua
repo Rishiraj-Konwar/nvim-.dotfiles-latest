@@ -33,13 +33,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "LineNr", { fg = "#555555" })
-
-		--	vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", { link = "Normal" })
-		--vim.api.nvim_set_hl(0, "NvimTreeNormal", { link = "Normal" })
-		--vim.api.nvim_set_hl(0, "NvimTreeSignColumn", { link = "Normal" })
-		--vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { link = "Normal" })
-		--vim.api.nvim_set_hl(0, "NvimTreeCursorLine", { bg = "#3c3836" })
 		vim.api.nvim_set_hl(0, "NormalNC", { link = "Normal" })
+
+		vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "TelescopePriviewBorder", { bg = "NONE" })
+
+		vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#E05454" })
+		vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#F48F68" })
 	end,
 })
 
