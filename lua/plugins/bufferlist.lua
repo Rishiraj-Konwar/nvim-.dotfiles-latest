@@ -17,20 +17,17 @@ return {
 			multi_close_buf = "X",
 		},
 		bufs_keymaps = {
-			-- Overwrite the default "y" (save) behavior with a bug-free version
 			{
 				"y",
 				function(args)
 					local buf = args.buffers[args.line_number]
 
-					-- Only run the save logic if the buffer is ACTUALLY modified
 					if vim.bo[buf].modified then
 						-- Save the file
 						vim.api.nvim_buf_call(buf, function()
 							vim.cmd("w")
 						end)
 
-						-- Safely clear the modified icon without glitching the text
 						vim.bo[args.bl_buf].modifiable = true
 						vim.api.nvim_buf_set_text(
 							args.bl_buf,

@@ -50,6 +50,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { bg = "NONE", fg = "#FFE5BF" })
 		vim.api.nvim_set_hl(0, "DiagnosticSignHint", { bg = "NONE", fg = "#6FBEB2" })
 		vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { bg = "NONE", fg = "#618764" })
+
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#E05454" })
 	end,
 })
 
