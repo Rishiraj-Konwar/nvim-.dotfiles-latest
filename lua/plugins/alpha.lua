@@ -7,7 +7,7 @@ return {
 		local config = {
 			layout = {
 				-- Adds some padding from the top of the screen
-				{ type = "padding", val = 10 },
+				{ type = "padding", val = 8 },
 				-- The header section containing our first frame
 				{ type = "text", val = splash.frames[1], opts = { position = "center" } },
 			},
