@@ -45,11 +45,20 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "GitSignsAdd", { bg = "NONE", fg = "#8DC07C" })
 		vim.api.nvim_set_hl(0, "GitSignsChange", { bg = "NONE", fg = "#F48F68" })
 		vim.api.nvim_set_hl(0, "GitSignsDelete", { bg = "NONE", fg = "#E05454" })
+
+		vim.api.nvim_set_hl(0, "DiagnosticSignError", { bg = "NONE", fg = "#E05454" })
+		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { bg = "NONE", fg = "#FFE5BF" })
+		vim.api.nvim_set_hl(0, "DiagnosticSignHint", { bg = "NONE", fg = "#6FBEB2" })
+		vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { bg = "NONE", fg = "#618764" })
 	end,
 })
 
 vim.diagnostic.config({
 	virtual_text = true,
-	signs = false,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+		},
+	},
 	underline = true,
 })
