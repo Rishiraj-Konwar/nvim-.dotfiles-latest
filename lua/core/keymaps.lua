@@ -20,4 +20,3 @@ keymaps.set("n", "<leader>E", vim.diagnostic.open_float)
 
 keymaps.set("n", "<leader>m", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 keymaps.set("n", "<leader>n", "<cmd>bnext<CR>", { desc = "Next buffer" })
-keymaps.set("n", "<leader>bx", "<cmd>bdelete<CR>", { desc = "Next buffer" })
