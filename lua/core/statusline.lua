@@ -139,15 +139,16 @@ vim.opt.statusline = "%!v:lua.CustomStatusLine()"
 
 vim.cmd("redrawstatus") -- no need if not using any floating window from dashboard
 
-vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "CmdlineLeave", "GitSignsUpdate" }, {
+vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "CmdlineLeave" }, {
 	callback = function()
 		vim.schedule(function()
 			vim.cmd("redrawstatus")
 		end)
 	end,
 })
-vim.api.nvim_create_autocmd("User", { -- Listen for ANY custom plugin event
-	pattern = "GitSignsUpdate", -- Filter it: only care if the name is "GitSignsUpdate"
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "GitSignsUpdate",
 	callback = function()
 		vim.cmd("redrawstatus")
 	end,
