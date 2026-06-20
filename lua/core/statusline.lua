@@ -6,6 +6,12 @@ vim.api.nvim_set_hl(0, "StGitBranch", { fg = "#d3c6aa", bg = "NONE" })
 vim.api.nvim_set_hl(0, "StGitAdd", { fg = "#a7c080", bg = "NONE" })
 vim.api.nvim_set_hl(0, "StGitChange", { fg = "#dbbc7f", bg = "NONE" })
 vim.api.nvim_set_hl(0, "StGitDelete", { fg = "#e67e80", bg = "NONE" })
+vim.api.nvim_set_hl(0, "FileModifiedIcon", { fg = "#8DC07C", bg = "NONE" })
+vim.api.nvim_set_hl(0, "ErrorHl", { fg = "#e67e80", bg = "NONE" })
+vim.api.nvim_set_hl(0, "WarningHl", { fg = "#dbbc7f", bg = "NONE" })
+vim.api.nvim_set_hl(0, "HintsHl", { fg = "#A5E9DD", bg = "NONE" })
+vim.api.nvim_set_hl(0, "InfoHl", { fg = "#B0BA99", bg = "NONE" })
+vim.api.nvim_set_hl(0, "RecordingHl", { fg = "#e67e80", bg = "NONE" })
 vim.api.nvim_set_hl(0, "StBase", { bg = "NONE" }) -- Transparent background
 
 local function get_mode()
@@ -43,6 +49,27 @@ local function get_git()
 	return diff .. branch .. ""
 end
 
+local function get_lsp_diagnostic_count()
+	local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+	local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+	local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+	local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+
+	local error_icon = errors > 0 and "  " .. errors or ""
+	local warnings_icon = warnings > 0 and "  " .. warnings or ""
+	local hints_icon = hints > 0 and "  " .. hints or ""
+	local info_icon = info > 0 and "  " .. info or ""
+
+	return "%#ErrorHl#"
+		.. error_icon
+		.. "%#WarningHl#"
+		.. warnings_icon
+		.. "%#HintsHl#"
+		.. hints_icon
+		.. "%#InfoHl#"
+		.. info_icon
+end
+
 local function get_icon()
 	local ok, devicons = pcall(require, "nvim-web-devicons")
 	if not ok then
@@ -55,16 +82,57 @@ local function get_icon()
 	return "%#" .. icon_hl .. "# " .. icon .. " %#StBase#"
 end
 
+local blink_icon = true
+local blink_timer = nil
+
+local function get_macro_reading()
+	local is_rec = vim.fn.reg_recording()
+	if is_rec == "" then
+		if blink_timer then
+			blink_timer:stop()
+			blink_timer = nil
+		end
+		return ""
+	end
+	if not blink_timer then
+		blink_timer = vim.uv.new_timer()
+		blink_timer:start(
+			0,
+			500,
+			vim.schedule_wrap(function()
+				blink_icon = not blink_icon
+				vim.cmd("redrawstatus")
+			end)
+		)
+	end
+	local icon = blink_icon and "" or " "
+	return "%#RecordingHl#" .. icon .. "%#StBase#" .. " Rec @"
+end
+
 function _G.CustomStatusLine()
 	local is_active = vim.g.statusline_winid == vim.fn.win_getid()
 	local is_modified = vim.api.nvim_get_option_value("modified", { buf = 0 })
-	local modified_icon = is_modified and "[+]" or ""
+	local modified_icon = is_modified and "" or ""
 	local filename = " %t"
-	local align_right = "%="
+	local space = "%="
 	if not is_active then
-		return "%#StBase#" .. filename .. align_right
+		return "%#StBase#" .. filename .. space
 	end
-	return "%#StBase#" .. filename .. " " .. modified_icon .. align_right .. get_git() .. get_mode() .. get_icon()
+	return "%#StBase# "
+		.. "%#FileModifiedIcon#"
+		.. modified_icon
+		.. " "
+		.. "%#StBase#"
+		.. filename
+		.. " "
+		.. get_lsp_diagnostic_count()
+		.. "%#StBase#"
+		.. space
+		.. get_macro_reading()
+		.. space
+		.. get_git()
+		.. get_mode()
+		.. get_icon()
 end
 
 vim.opt.statusline = "%!v:lua.CustomStatusLine()"
