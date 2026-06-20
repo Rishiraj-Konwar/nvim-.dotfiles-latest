@@ -19,7 +19,7 @@ local function get_mode()
 		n = { " n ", "StModeNormal" },
 		i = { " i ", "StModeInsert" },
 		v = { " v ", "StModeVisual" },
-		V = { " v-line", "StModeVisual" },
+		V = { " v-line ", "StModeVisual" },
 		["\22"] = { " v-block ", "StModeVisual" },
 		c = { " c ", "StModeOther" },
 		r = { " r ", "StModeOther" },
@@ -50,10 +50,12 @@ local function get_git()
 end
 
 local function get_lsp_diagnostic_count()
-	local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-	local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-	local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
-	local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+	local counts = vim.diagnostic.count(0)
+
+	local errors = counts[vim.diagnostic.severity.ERROR] or 0
+	local warnings = counts[vim.diagnostic.severity.WARN] or 0
+	local hints = counts[vim.diagnostic.severity.HINT] or 0
+	local info = counts[vim.diagnostic.severity.INFO] or 0
 
 	local error_icon = errors > 0 and "  " .. errors or ""
 	local warnings_icon = warnings > 0 and "  " .. warnings or ""
@@ -70,9 +72,9 @@ local function get_lsp_diagnostic_count()
 		.. info_icon
 end
 
+local has_devicons, devicons = pcall(require, "nvim-web-devicons")
 local function get_icon()
-	local ok, devicons = pcall(require, "nvim-web-devicons")
-	if not ok then
+	if not has_devicons then
 		return ""
 	end
 	local icon, icon_hl = devicons.get_icon(vim.fn.expand("%:t"), vim.fn.expand("%:e"))
@@ -90,6 +92,7 @@ local function get_macro_reading()
 	if is_rec == "" then
 		if blink_timer then
 			blink_timer:stop()
+			blink_timer:close()
 			blink_timer = nil
 		end
 		return ""
