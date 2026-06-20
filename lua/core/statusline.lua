@@ -146,3 +146,9 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "CmdlineLeave", "Git
 		end)
 	end,
 })
+vim.api.nvim_create_autocmd("User", { -- Listen for ANY custom plugin event
+	pattern = "GitSignsUpdate", -- Filter it: only care if the name is "GitSignsUpdate"
+	callback = function()
+		vim.cmd("redrawstatus")
+	end,
+})
