@@ -139,7 +139,7 @@ vim.opt.statusline = "%!v:lua.CustomStatusLine()"
 
 vim.cmd("redrawstatus") -- no need if not using any floating window from dashboard
 
-vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "CmdlineLeave" }, {
+vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "CmdlineLeave", "GitSignsUpdate" }, {
 	callback = function()
 		vim.schedule(function()
 			vim.cmd("redrawstatus")
