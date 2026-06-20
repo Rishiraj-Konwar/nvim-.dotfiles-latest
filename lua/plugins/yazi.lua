@@ -46,7 +46,6 @@ return {
 	init = function()
 		-- mark netrw as loaded so it's not loaded at all.
 		vim.api.nvim_set_hl(0, "YaziFloatBorder", { bg = "NONE" })
-
 		-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
 		vim.g.loaded_netrwPlugin = 1
 	end,

@@ -23,7 +23,7 @@ vim.g.loaded_netrwPlugin = 1
 
 opt.swapfile = false
 opt.backup = false
-
+opt.winbar = " "
 opt.clipboard:append("unnamedplus")
 
 vim.api.nvim_create_autocmd("ColorScheme", {
@@ -42,6 +42,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 		vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#E05454" })
 		vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#F48F68" })
+
 		vim.api.nvim_set_hl(0, "GitSignsAdd", { bg = "NONE", fg = "#8DC07C" })
 		vim.api.nvim_set_hl(0, "GitSignsChange", { bg = "NONE", fg = "#F48F68" })
 		vim.api.nvim_set_hl(0, "GitSignsDelete", { bg = "NONE", fg = "#E05454" })
@@ -50,7 +51,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { bg = "NONE", fg = "#FFE5BF" })
 		vim.api.nvim_set_hl(0, "DiagnosticSignHint", { bg = "NONE", fg = "#6FBEB2" })
 		vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { bg = "NONE", fg = "#618764" })
-
 		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#E05454" })
 	end,
 })
