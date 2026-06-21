@@ -9,11 +9,11 @@ return {
 				glyph = "", -- The icon
 				hl = "MiniIconsAzure", -- The color highlight group
 			},
-			directory = {
-				["node_modules"] = { glyph = "", hl = "MiniIconsRed" },
-				[".github"] = { glyph = "", hl = "MiniIconsGrey" },
-				["src"] = { glyph = "", hl = "MiniIconsBlue" },
-			},
+		},
+		directory = {
+			["node_modules"] = { glyph = "", hl = "MiniIconsRed" },
+			[".github"] = { glyph = "", hl = "MiniIconsGrey" },
+			["src"] = { glyph = "", hl = "MiniIconsBlue" },
 		},
 	},
 	init = function()

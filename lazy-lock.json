@@ -11,6 +11,7 @@
   "miasma.nvim-transparent": { "branch": "main", "commit": "8594ab204acd1f4043f8be2b4787ac27bcbc8a35" },
   "milli.nvim": { "branch": "main", "commit": "00274623b76a66356e31e1861360b269987a7f64" },
   "mini.icons": { "branch": "main", "commit": "e56797f90192d81f1fda02e662fc3e8e3d775027" },
+  "neoscroll.nvim": { "branch": "master", "commit": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "7b9923abad60b903ece7c52940e1321d39eccc79" },
   "nvim-cmp": { "branch": "main", "commit": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca" },
