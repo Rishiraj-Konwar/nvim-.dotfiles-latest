@@ -1,3 +1,13 @@
+local function get_lazy_updates()
+	local lazy_status = require("lazy.status")
+	local has_updates = lazy_status.has_updates()
+	if has_updates == false then
+		return ""
+	end
+	local updates = lazy_status.updates()
+	return "%#LazyCheckHl#" .. " " .. updates .. " " .. "%#StBase#"
+end
+
 local function get_mode()
 	local mode_map = {
 		n = { " n ", "StModeNormal" },
@@ -117,6 +127,7 @@ function _G.CustomStatusLine()
 		.. space
 		.. get_macro_reading()
 		.. space
+		.. get_lazy_updates()
 		.. get_git()
 		.. get_mode()
 		.. get_icon()
@@ -135,7 +146,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "CmdlineLeave" }, {
 })
 
 vim.api.nvim_create_autocmd("User", {
-	pattern = "GitSignsUpdate",
+	pattern = { "GitSignsUpdate", "LazyCheck" },
 	callback = function()
 		vim.cmd("redrawstatus")
 	end,
