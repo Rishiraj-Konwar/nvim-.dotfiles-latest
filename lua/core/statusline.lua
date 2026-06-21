@@ -53,7 +53,7 @@ local function get_lsp_diagnostic_count()
 
 	local error_icon = errors > 0 and "  " .. errors or ""
 	local warnings_icon = warnings > 0 and "  " .. warnings or ""
-	local hints_icon = hints > 0 and "  " .. hints or ""
+	local hints_icon = hints > 0 and "  " .. hints or ""
 	local info_icon = info > 0 and "  " .. info or ""
 
 	return "%#ErrorHl#"
