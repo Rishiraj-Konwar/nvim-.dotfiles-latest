@@ -15,13 +15,13 @@ return {
 					{ section = "header", padding = 2 },
 					{
 						text = {
-							{ " ", hl = "SnacksDashboardIcon" },
+							{ "  ", hl = "SnacksDashboardIcon" },
 							{ "f    ", hl = "SnacksDashboardDesc" },
-							{ " ", hl = "SnacksDashboardIcon" },
+							{ "  ", hl = "SnacksDashboardIcon" },
 							{ "e    ", hl = "SnacksDashboardDesc" },
 							{ "󰒲  ", hl = "SnacksDashboardIcon" },
 							{ "l    ", hl = "SnacksDashboardDesc" },
-							{ " ", hl = "SnacksDashboardIcon" },
+							{ "  ", hl = "SnacksDashboardIcon" },
 							{ "q    ", hl = "SnacksDashboardDesc" },
 						},
 						align = "center",
@@ -30,6 +30,18 @@ return {
 					{ key = "e", action = ":Yazi", hidden = true },
 					{ key = "l", action = ":Lazy", hidden = true },
 					{ key = "q", action = ":qa", hidden = true },
+				},
+			},
+			indent = {
+				enabled = true,
+				animate = {
+					enabled = true,
+					style = "out",
+					duration = 20,
+				},
+				scope = {
+					enabled = true,
+					char = "│",
 				},
 			},
 		}
