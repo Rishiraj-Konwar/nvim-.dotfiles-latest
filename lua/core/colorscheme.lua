@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#E05454" })
 
 		-- statusline
-		vim.api.nvim_set_hl(0, "StModeNormal", { fg = "#2d353b", bg = "#83c092", bold = true })
-		vim.api.nvim_set_hl(0, "StModeInsert", { fg = "#2d353b", bg = "#F7F1DE", bold = true })
+		vim.api.nvim_set_hl(0, "StModeNormal", { fg = "#2d353b", bg = "#83a598", bold = true })
+		vim.api.nvim_set_hl(0, "StModeInsert", { fg = "#2d353b", bg = "#d5c4a1", bold = true })
 		vim.api.nvim_set_hl(0, "StModeVisual", { fg = "#2d353b", bg = "#d699b6", bold = true })
 		vim.api.nvim_set_hl(0, "StModeOther", { fg = "#2d353b", bg = "#e67e80", bold = true })
 		vim.api.nvim_set_hl(0, "StGitBranch", { fg = "#d3c6aa", bg = "NONE" })

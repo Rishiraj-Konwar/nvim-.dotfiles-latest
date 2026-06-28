@@ -5,17 +5,33 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"chrisgrieser/cmp-nerdfont",
+		"onsails/lspkind.nvim",
 	},
 	opts = function()
 		vim.lsp.config("*", { capabilities = require("cmp_nvim_lsp").default_capabilities() })
-
 		local cmp = require("cmp")
-
 		return {
 			snippet = {
 				expand = function(args)
 					vim.snippet.expand(args.body)
 				end,
+			},
+
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "nerdfont" },
+				{ name = "path" },
+			}, {
+				{ name = "buffer" },
+			}),
+
+			formatting = {
+				format = require("lspkind").cmp_format({
+					mode = "symbol_text",
+					maxwidth = 50,
+					ellipsis_char = "...",
+				}),
 			},
 
 			mapping = cmp.mapping.preset.insert({
@@ -25,13 +41,6 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Enter to confirm
-			}),
-
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "path" },
-			}, {
-				{ name = "buffer" },
 			}),
 
 			window = {

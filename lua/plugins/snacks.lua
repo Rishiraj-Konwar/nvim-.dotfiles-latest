@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	dependencies = { "amansingh-afk/milli.nvim" },
 	opts = function()
-		local splash = require("milli").load({ splash = "frames" })
+		local splash = require("milli").load({ splash = "frames5" })
 		return {
 			dashboard = {
 				enabled = true,
@@ -37,7 +37,7 @@ return {
 				animate = {
 					enabled = true,
 					style = "out",
-					duration = 20,
+					duration = 28,
 				},
 				scope = {
 					enabled = true,
@@ -48,6 +48,6 @@ return {
 	end,
 	config = function(_, opts)
 		require("snacks").setup(opts)
-		require("milli").snacks({ splash = "frames", loop = true })
+		require("milli").snacks({ splash = "frames5", loop = true })
 	end,
 }
